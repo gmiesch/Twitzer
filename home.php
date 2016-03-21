@@ -27,7 +27,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <!-- Custom styles for this template -->
-    <link href="css/index.css" rel="stylesheet">
+    <link href="css/home.css" rel="stylesheet">
   </head>
 
   <body>
