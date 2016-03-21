@@ -1,2 +1,2 @@
 # Twitzer
-Geolocated Tweet Visualization
+Tweet word frequency visualisation
