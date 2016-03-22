@@ -3,9 +3,9 @@ var finalResponseFormat;
 
 var oneWordCloudOpen = false;
 var rowWordCloudOpen = -1;
+var lastButtonClicked = -1;
 
 getHistory();
-
 
 function getHistory() {
     var xmlhttp = new XMLHttpRequest();
@@ -57,7 +57,26 @@ function showWordCloud(row, historyId) {
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			responseFromServer = xmlhttp.responseText;
-			console.log("Making word cloud with this id: " + historyId);
+
+			if(Number(lastButtonClicked) != row) {
+				//Rotate already clicked button back to normal
+				var angle = ($("#"+lastButtonClicked).data('angle') + 180) || 180;
+				$("#"+lastButtonClicked).css({'transform': 'rotate(' + angle + 'deg)'});
+				$("#"+lastButtonClicked).data('angle', angle);
+				
+				//Rotate new button and set it as last clicked
+				lastButtonClicked = row;
+				var angle = ($("#"+row).data('angle') + 180) || 180;
+				$("#"+row).css({'transform': 'rotate(' + angle + 'deg)'});
+				$("#"+row).data('angle', angle);
+			} else {
+				//Rotate button back to normal after collapsing word cloud, set last clicked to -1
+				var angle = ($("#"+lastButtonClicked).data('angle') + 180) || 180;
+				$("#"+lastButtonClicked).css({'transform': 'rotate(' + angle + 'deg)'});
+				$("#"+lastButtonClicked).data('angle', angle);
+				lastButtonClicked = -1;
+			}
+
 			makeWordCloud(row);
         }
     }
@@ -73,21 +92,23 @@ var color = d3.scale.linear()
 
 
 function makeWordCloud(row) {
+	var rowJustClosed = -1;
+
+	//If word cloud already open, close it
 	if(oneWordCloudOpen) {
-		//remove row
-		console.log("Deleting row: " + rowWordCloudOpen);
-		document.getElementById("searchHistory").deleteRow(rowWordCloudOpen);	
+		document.getElementById("searchHistory").deleteRow(rowWordCloudOpen);
 		oneWordCloudOpen = false;
+		rowJustClosed = rowWordCloudOpen;
 	} 
 
-	//Problem here, need to figure out how to collapse one word cloud
-	alert("row is : " + row + " wco is : " + rowWordCloudOpen);
-	
-	if(row !== rowWordCloudOpen) {
+	//If no word cloud open and selecting a button on a new row, add new word cloud
+	if((Number(row)+1) !== rowWordCloudOpen || Number(rowJustClosed) !== Number(row)+1) {
 		rowToAdd = Number(row) + 1;
-		document.getElementById("searchHistory").insertRow(rowToAdd).setAttribute("id", "tempChart");	
+	
+		document.getElementById("searchHistory").insertRow(rowToAdd).setAttribute("id", "tempChart");
 		document.getElementById("tempChart").insertCell(0).setAttribute("id", "chart");
 		document.getElementById("chart").colSpan = 3;
+
 		rowWordCloudOpen = rowToAdd;
 		oneWordCloudOpen = true;
 	}
@@ -103,9 +124,6 @@ function makeWordCloud(row) {
 }
 
 function draw(words) {
-	//figure out how to remove word clouds after they have been opened
-	//$("svg").remove();
-	
 	d3.select("#chart").append("svg")
 		.attr("width", 850)
 		.attr("height", 350)
