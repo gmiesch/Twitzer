@@ -5,10 +5,35 @@ html {
 }
 
 body {
-  padding-top: 20px;
+  padding-top: 0px;
   padding-bottom: 40px;
   margin-bottom: 100px;
   background-color: #0088CC;
+}
+
+.navbar-nav > li > a {
+    padding-top:5px !important; padding-bottom:5px !important;
+}
+
+.navbar-nav > li > a, .navbar-brand {
+    padding-top:5px !important; padding-bottom:0 !important;
+    height: 30px;
+}
+
+.navbar {
+	font-size: 14px;
+    border-radius: 0 !important;
+    min-height:32px !important
+}
+
+.navbar-default .navbar-brand:hover, 
+.navbar-default .navbar-brand:focus {
+  background-color: transparent;
+  color: white;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #bdc3c7;
 }
 
 .footer {
@@ -17,7 +42,7 @@ body {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 100px;
+  height: 35px;
 }
 
 #tableWell {
@@ -26,16 +51,21 @@ body {
   margin: 0 auto;
   border: 0px;
   border-radius: 4px;
-  background: #007ab7;
 }
 
 #searchHistory {
   text-align: center;
+  font-size: 16px;
   font-weight: bold;
 }
 
 #headerCol {
-  background: white;
+  background: #2c3e50;
+  color: white;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #bdc3c7;
 }
 
 .btn-neat {
@@ -43,6 +73,7 @@ body {
   height: 30px;
   text-align: center;
   padding: 6px 0;
+  border: none;
   font-size: 12px;
   background: black;
 }
