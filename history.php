@@ -31,7 +31,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     
 	<!-- Custom styles for this template -->
-    <link href="css/home.css" rel="stylesheet">
+    <link href="css/history.css" rel="stylesheet">
 
 	<!-- Word cloud required files -->
 	<script src="http://d3js.org/d3.v3.min.js"></script>
@@ -41,35 +41,22 @@
 
   <body>
 
-    <div class="well bs-component" id="formWell">
-      <form class="form-signin" action="" method="post">
-        <h4 class="form-signin-heading">Select Parameters</h4>
-        <label for="inputUsername" class="sr-only">Twitter Username</label>
-        <input type="text" id="inputTwitterName" name="inputTwitterName" class="form-control" placeholder="Twitter Username" required autofocus>
-        <label for="inputNumTweets" class="sr-only">Number of Tweets</label>
-        <input type="number" id="inputNumTweets" name="inputNumTweets" class="form-control" max="1000" placeholder="Number of Tweets" required>
-		<button class="btn btn-primary btn-block" name="submit" onclick="getTweets(); return false" type="submit">Submit</button>
-      </form>
-    </div>
+  <div class="well bs-component" id="tableWell">
+    <table class="table table-hover" id="searchHistory">
+	</table> 
+  </div>
 
-	<h3 id="resultsTitle"></h3>
-	
-	<!-- Target container for word cloud -->
-	<div class="well bs-component hidden" id="resultsWell">
-		<div id="chart"></div>
-		<button class="btn btn-sm btn-primary" onclick="saveTweet();"> Save Result </button>
-	</div>
 
   </body>
 
   <footer class="footer">
       <div class="container">
           <p> Twitzer - Trinity University </p>
-          <p><a class="btn btn-sm btn-primary" href="index.php" role="button"> Logout </a>   <a class="btn btn-sm btn-primary" href="history.php" role="button"> View History </a></p>
+          <p><a class="btn btn-sm btn-primary" href="index.php" role="button"> Logout </a></p>
       </div>
   </footer>
 
-	<script src="js/home.js"></script>
+	<script src="js/history.js"></script>
 
 </html>
 

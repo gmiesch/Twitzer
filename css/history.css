@@ -1,0 +1,49 @@
+html {
+  position: relative;
+  min-height: 100%;
+  background-color: #0088CC;
+}
+
+body {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  margin-bottom: 100px;
+  background-color: #0088CC;
+}
+
+.footer {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 100px;
+}
+
+#tableWell {
+  max-width: 1200px;
+  padding: 0px;
+  margin: 0 auto;
+  border: 0px;
+  border-radius: 4px;
+  background: #007ab7;
+}
+
+#searchHistory {
+  text-align: center;
+  font-weight: bold;
+}
+
+#headerCol {
+  background: white;
+}
+
+.btn-neat {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  background: black;
+}
+
