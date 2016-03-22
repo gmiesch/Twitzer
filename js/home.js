@@ -6,6 +6,7 @@ function getTweets() {
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { 
 			results = xmlhttp.responseText;
+			console.log(results);
 			makeWordCloud();
 			$("#resultsTitle").html(twitterUsername + "'s last " + numTweets + " tweets:");
 		}
@@ -13,7 +14,6 @@ function getTweets() {
 
     var twitterUsername = document.getElementById('inputTwitterName').value;
     var numTweets = document.getElementById('inputNumTweets').value;
-
     xmlhttp.open("POST", "php/getTweets.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("inputTwitterUsername=" + twitterUsername + "&inputNumTweets=" + numTweets);
