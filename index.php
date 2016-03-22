@@ -1,4 +1,4 @@
-<?php include 'php/checkIfDias11.php';?>
+<?php include 'php/checkIfDias13.php';?>
 
 <?php session_start(); ?>
 
@@ -21,6 +21,9 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
+	<!-- Theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css">	
+
     <!--JQuery pulldown -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
@@ -39,8 +42,13 @@
         <input type="text" id="inputUsername" name="inputUsername" class="form-control" placeholder="Username" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-default btn-block" name="submit" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Sign in</button>
       </form>
+	</div>
+
+	<div class="container" id="createAccount">
+	  <h4> Or, click below to create an account: </h4>
+      <p><a class="btn btn-sm btn-primary" href="register.php" role="button"> Create Account </a></p>
     </div>
 
     <?php include 'php/validateUser.php';?>
@@ -50,7 +58,6 @@
   <footer class="footer">
       <div class="container">
           <p> Twitzer - Trinity University </p>
-      	  <p><a class="btn btn-default" href="register.php" role="button"> Create Account </a></p>
 	  </div>
   </footer>
 

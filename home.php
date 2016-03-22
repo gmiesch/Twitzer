@@ -1,4 +1,4 @@
-<?php include 'php/checkIfDias11.php';?>
+<?php include 'php/checkIfDias13.php';?>
 
 <?php session_start(); ?>
 
@@ -21,6 +21,9 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
+    <!-- Theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css">
+
     <!--JQuery pulldown -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
@@ -30,16 +33,17 @@
     <link href="css/home.css" rel="stylesheet">
   </head>
 
+
   <body>
 
-    <div class="container">
+    <div class="well bs-component" id="formWell">
       <form class="form-signin" action="" method="post">
-        <h2 class="form-signin-heading">Select the Stuff</h2>
+        <h4 class="form-signin-heading">Select Parameters</h4>
         <label for="inputUsername" class="sr-only">Twitter Username</label>
         <input type="text" id="inputTwitterName" name="inputTwitterName" class="form-control" placeholder="Twitter Username" required autofocus>
         <label for="inputNumTweets" class="sr-only">Number of Tweets</label>
         <input type="number" id="inputTweets" name="inputNumTweets" class="form-control" max="1000" placeholder="Number of Tweets" required>
-		<button class="btn btn-lg btn-default btn-block" name="submit" type="submit">Submit</button>
+		<button class="btn btn-primary btn-block" name="submit" type="submit">Submit</button>
       </form>
     </div>
 
@@ -50,7 +54,7 @@
   <footer class="footer">
       <div class="container">
           <p> Twitzer - Trinity University </p>
-          <p><a class="btn btn-default" href="index.php" role="button"> Logout </a></p>
+          <p><a class="btn btn-sm btn-primary" href="index.php" role="button"> Logout </a></p>
       </div>
   </footer>
 
