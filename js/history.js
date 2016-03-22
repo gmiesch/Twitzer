@@ -55,7 +55,8 @@ function showWordCloud(row, historyId) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			//makeWordCloud(xmlhttp.responseText, historyId);
 			responseFromServer = xmlhttp.responseText;
-			makeWordCloud(historyId);
+			console.log("Making word cloud with this id: " + historyId);
+			makeWordCloud(row, historyId);
         }
     }
 
@@ -69,9 +70,9 @@ var color = d3.scale.linear()
     .range(["#ddd", "#ccc", "#bbb", "#aaa", "#999", "#888", "#777", "#666", "#555", "#444", "#333", "#222"]);
 
 
-function makeWordCloud(historyId) {
-	historyId = Number(historyId) + 1;
-	document.getElementById("searchHistory").insertRow(historyId).setAttribute("id", "tempChart");	
+function makeWordCloud(row, historyId) { 
+	rowToAdd = Number(row) + 1;
+	document.getElementById("searchHistory").insertRow(rowToAdd).setAttribute("id", "tempChart");	
 	document.getElementById("tempChart").insertCell(0).setAttribute("id", "chart");
 	document.getElementById("chart").colSpan = 3;
 
