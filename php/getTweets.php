@@ -39,5 +39,5 @@
 		. "oauth_timestamp=\"" . $timestamp . "\", "
 		. "oauth_version=\"1.0\"'";
 		
-	echo exec($res);	
+	echo exec($res);
 ?>
