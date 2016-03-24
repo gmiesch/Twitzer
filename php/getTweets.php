@@ -4,7 +4,8 @@
 	// Variables from post
 	$rawUsername = $_POST['inputTwitterUsername'];
 	$rawCount = $_POST['inputNumTweets'];
-	
+
+	$rawCount = min(200, $rawCount);	
 	// Auth Keys from text file
 	$keyFile = fopen("keys.txt", "r") or die("No keys.txt file found!");
 	$line = fgets($keyFile);

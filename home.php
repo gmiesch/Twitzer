@@ -68,7 +68,7 @@
         <label for="inputUsername" class="sr-only">Twitter Username</label>
         <input type="text" id="inputTwitterName" name="inputTwitterName" class="form-control" placeholder="Twitter Username" required autofocus>
         <label for="inputNumTweets" class="sr-only">Number of Tweets</label>
-        <input type="number" id="inputNumTweets" name="inputNumTweets" class="form-control" max="200" placeholder="Number of Tweets" required>
+        <input type="number" id="inputNumTweets" name="inputNumTweets" class="form-control" max="200" placeholder="Number of Tweets (200 max)" required>
 		<button class="btn btn-primary btn-block" name="submit" onclick="getTweets(); return false" type="submit">Submit</button>
       </form>
     </div>
