@@ -26,7 +26,7 @@ function makeMapping(rawJSON) {
 		sentences[i] = rawJSON[i]["text"];
 	}
 	var dictionary = {};
-	var common = "\\n,&lt,&gt,rt,http://t,https://t,poop,i,me,my,myself,we,us,our,ours,ourselves,you,your,yours,yourself,yourselves,he,him,his,himself,she,her,hers,herself,it,its,itself,they,them,their,theirs,themselves,what,which,who,whom,whose,this,that,these,those,am,is,are,was,were,be,been,being,have,has,had,having,do,does,did,doing,will,would,should,can,could,ought,i'm,you're,he's,she's,it's,we're,they're,i've,you've,we've,they've,i'd,you'd,he'd,she'd,we'd,they'd,i'll,you'll,he'll,she'll,we'll,they'll,isn't,aren't,wasn't,weren't,hasn't,haven't,hadn't,doesn't,don't,didn't,won't,wouldn't,shan't,shouldn't,can't,cannot,couldn't,mustn't,let's,that's,who's,what's,here's,there's,when's,where's,why's,how's,a,an,the,and,but,if,or,because,as,until,while,of,at,by,for,with,about,against,between,into,through,during,before,after,above,below,to,from,up,upon,down,in,out,on,off,over,under,again,further,then,once,here,there,when,where,why,how,all,any,both,each,few,more,most,other,some,such,no,nor,not,only,own,same,so,than,too,very,say,says,said,shall";
+	var common = "via,000,&amp,\\n,&lt,&gt,rt,http://t,https://t,i,me,my,myself,we,us,our,ours,ourselves,you,your,yours,yourself,yourselves,he,him,his,himself,she,her,hers,herself,it,its,itself,they,them,their,theirs,themselves,what,which,who,whom,whose,this,that,these,those,am,is,are,was,were,be,been,being,have,has,had,having,do,does,did,doing,will,would,should,can,could,ought,i'm,you're,he's,she's,it's,we're,they're,i've,you've,we've,they've,i'd,you'd,he'd,she'd,we'd,they'd,i'll,you'll,he'll,she'll,we'll,they'll,isn't,aren't,wasn't,weren't,hasn't,haven't,hadn't,doesn't,don't,didn't,won't,wouldn't,shan't,shouldn't,can't,cannot,couldn't,mustn't,let's,that's,who's,what's,here's,there's,when's,where's,why's,how's,a,an,the,and,but,if,or,because,as,until,while,of,at,by,for,with,about,against,between,into,through,during,before,after,above,below,to,from,up,upon,down,in,out,on,off,over,under,again,further,then,once,here,there,when,where,why,how,all,any,both,each,few,more,most,other,some,such,no,nor,not,only,own,same,so,than,too,very,say,says,said,shall";
 
         var word_count = {};
 	for (var i = 0; i < sentences.length; ++i) {
@@ -88,9 +88,7 @@ function saveTweet() {
     var twitterUsername = document.getElementById('inputTwitterName').value;
     var numTweets = document.getElementById('inputNumTweets').value;
     var json = topResultsForBlob;
-		console.log(json);
     json = JSON.stringify(json);
-		console.log(json);
     xmlhttp.open("POST", "php/saveTweet.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("inputTwitterUsername=" + twitterUsername + "&inputNumTweets=" + numTweets + "&json=" + json);
@@ -107,8 +105,7 @@ var color = d3.scale.linear()
 function makeWordCloud() {
 	$("#resultsWell").removeClass("hidden");
 
-
-	d3.layout.cloud().size([800, 300])
+	d3.layout.cloud().size([900, 400])
 	    .words(topResults)
 	    .rotate(0)
 	    .fontSize(function(d) { return d.size; })
@@ -119,13 +116,13 @@ function makeWordCloud() {
 function draw(words) {
 	$("svg").remove();
 	d3.select("#chart").append("svg")
-		.attr("width", 850)
-		.attr("height", 350)
+		.attr("width", 1200)
+		.attr("height", 450)
 		.attr("class", "wordcloud")
 		.append("g")
 		// without the transform, words words would get cutoff to the left and top, they would
 		// appear outside of the SVG area
-		.attr("transform", "translate(320,200)")
+		.attr("transform", "translate(500,225)")
 		.selectAll("text")
 		.data(words)
 		.enter().append("text")

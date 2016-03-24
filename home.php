@@ -68,17 +68,17 @@
         <label for="inputUsername" class="sr-only">Twitter Username</label>
         <input type="text" id="inputTwitterName" name="inputTwitterName" class="form-control" placeholder="Twitter Username" required autofocus>
         <label for="inputNumTweets" class="sr-only">Number of Tweets</label>
-        <input type="number" id="inputNumTweets" name="inputNumTweets" class="form-control" max="1000" placeholder="Number of Tweets" required>
+        <input type="number" id="inputNumTweets" name="inputNumTweets" class="form-control" max="200" placeholder="Number of Tweets" required>
 		<button class="btn btn-primary btn-block" name="submit" onclick="getTweets(); return false" type="submit">Submit</button>
       </form>
     </div>
 
-	<h3 id="resultsTitle"></h3>
 	
 	<!-- Target container for word cloud -->
 	<div class="well bs-component hidden" id="resultsWell">
+		<h3 id="resultsTitle"></h3>
 		<div id="chart"></div>
-		<button class="btn btn-sm btn-primary" onclick="saveTweet();"> Save Result </button>
+		<button class="btn btn-sm btn-primary btn-block" id="saveResults" onclick="saveTweet();"> Save Result </button>
 	</div>
 
   </body>

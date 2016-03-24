@@ -41,7 +41,7 @@ function buildTable(history) {
 		
 		if((i-1) % 3 == 0) {
 			i++;
-			newTable += "<td> <button type=\"button\" name=" + history[i] + " id=" + rowNumber + " onclick=\"showWordCloud(this.id, this.name);\" class=\"btn btn-default btn-neat\"> <span class=\"glyphicon glyphicon-chevron-down\"></span> </button> </td>";
+			newTable += "<td> <button type=\"button\" name=" + history[i] + " id=" + rowNumber + " onclick=\"showWordCloud(this.id, this.name);\" class=\"btn btn-default btn-neat\"><span class=\"glyphicon glyphicon-chevron-down\"></span></button> </td>";
 			newTable += "</tr>";
 			rowNumber++;
 		}
@@ -63,7 +63,7 @@ function showWordCloud(row, historyId) {
 				var angle = ($("#"+lastButtonClicked).data('angle') + 180) || 180;
 				$("#"+lastButtonClicked).css({'transform': 'rotate(' + angle + 'deg)'});
 				$("#"+lastButtonClicked).data('angle', angle);
-				
+	
 				//Rotate new button and set it as last clicked
 				lastButtonClicked = row;
 				var angle = ($("#"+row).data('angle') + 180) || 180;
@@ -106,8 +106,9 @@ function makeWordCloud(row) {
 		rowToAdd = Number(row) + 1;
 	
 		document.getElementById("searchHistory").insertRow(rowToAdd).setAttribute("id", "tempChart");
-		document.getElementById("tempChart").insertCell(0).setAttribute("id", "chart");
+		document.getElementById("tempChart").insertCell(0).setAttribute("id", "chart");		
 		document.getElementById("chart").colSpan = 3;
+		document.getElementById("tempChart").style.background = '#007ab7';
 
 		rowWordCloudOpen = rowToAdd;
 		oneWordCloudOpen = true;
@@ -115,7 +116,7 @@ function makeWordCloud(row) {
 	
 	finalResponseFormat = JSON.parse(responseFromServer);
 
-	d3.layout.cloud().size([800, 300])
+	d3.layout.cloud().size([900, 400])
 	    .words(finalResponseFormat)
 	    .rotate(0)
 	    .fontSize(function(d) { return d.size; })
@@ -125,13 +126,13 @@ function makeWordCloud(row) {
 
 function draw(words) {
 	d3.select("#chart").append("svg")
-		.attr("width", 850)
-		.attr("height", 350)
+		.attr("width", 1000)
+		.attr("height", 450)
 		.attr("class", "wordcloud")
 		.append("g")
 		// without the transform, words words would get cutoff to the left and top, they would
 		// appear outside of the SVG area
-		.attr("transform", "translate(320,200)")
+		.attr("transform", "translate(500,225)")
 		.selectAll("text")
 		.data(words)
 		.enter().append("text")
