@@ -41,14 +41,14 @@ function makeMapping(rawJSON) {
 			}
 		}
 	}
-  var sortedValues = [];
-  for(a in dictionary) {
-    tmp = {};
-    tmp['text'] = a;
-    tmp['size'] = dictionary[a]; 
-    sortedValues.push(tmp);
-  }
-  sortedValues.sort(function(a,b) {return a['size']-b['size'];}).reverse();
+  	var sortedValues = [];
+  	for(a in dictionary) {
+    		tmp = {};
+    		tmp['text'] = a;
+    		tmp['size'] = dictionary[a]; 
+    		sortedValues.push(tmp);
+  	}
+  	sortedValues.sort(function(a,b) {return a['size']-b['size'];}).reverse();
 	topResults = [];
 	for (var i = 0; i < Math.min(topNumResults, sortedValues.length); ++i) {
 		topResults[i] = sortedValues[i];
@@ -62,36 +62,35 @@ function makeMapping(rawJSON) {
 	}
 	topResultsForBlob = [];
 	for (var i = 0; i < topResults.length; ++i) {
-    var tmp = topResults[i];
-    var newObj = {};
-    newObj['text'] = tmp['text'];
-    newObj['size'] = tmp['size'];
+    	var tmp = topResults[i];
+    	var newObj = {};
+    	newObj['text'] = tmp['text'];
+    	newObj['size'] = tmp['size'];
 		topResultsForBlob[i] = newObj;
 	}
 }
 
 Number.prototype.map = function (inMin, inMax, outMin, outMax) {
-  return (this - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+	return (this - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
 }
 
 
 function saveTweet() {
-    var xmlhttp = new XMLHttpRequest();
-
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { 
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+        	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { 
 			console.log("successfully saved the tweet");
 			console.log(xmlhttp.responseText);
 		}
-    }
+	}
 
-    var twitterUsername = document.getElementById('inputTwitterName').value;
-    var numTweets = document.getElementById('inputNumTweets').value;
-    var json = topResultsForBlob;
-    json = JSON.stringify(json);
-    xmlhttp.open("POST", "php/saveTweet.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("inputTwitterUsername=" + twitterUsername + "&inputNumTweets=" + numTweets + "&json=" + json);
+    	var twitterUsername = document.getElementById('inputTwitterName').value;
+    	var numTweets = document.getElementById('inputNumTweets').value;
+    	var json = topResultsForBlob;
+    	json = JSON.stringify(json);
+    	xmlhttp.open("POST", "php/saveTweet.php", true);
+    	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    	xmlhttp.send("inputTwitterUsername=" + twitterUsername + "&inputNumTweets=" + numTweets + "&json=" + json);
 }
 
 var test_pre_run = [{"text":"study","size":40},{"text":"motion","size":15},{"text":"forces","size":10},{"text":"electricity","size":15},{"text":"movement","size":10},{"text":"relation","size":5}];
