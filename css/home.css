@@ -37,6 +37,7 @@ body {
 }
 
 #logoutButton {
+  border-radius: 0 !important;
   color: white;
   font-size: 14px;
   padding-bottom: 3px;

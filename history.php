@@ -15,7 +15,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="images/favicon.ico">
     
     <title>Twitzer</title>
 
@@ -56,7 +56,12 @@
             <li class="active"><a href="#">View History<span class="sr-only">(current)</span></a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.php">Logout  <span class="glyphicon glyphicon-log-out"></span></a></li>
+    <li><form method="POST" action='php/logout.php'>
+        <button class="btn btn-primary btn-sm" type='submit' id="logoutButton">Logout
+        <span class="glyphicon glyphicon-log-out">
+        </span>
+        </button>
+      </form></li>
           </ul>
         </div>
       </div>
