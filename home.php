@@ -1,6 +1,10 @@
 <?php include 'php/checkIfDias13.php';?>
 
-<?php session_start(); ?>
+<?php session_start(); 
+	if(!$_SESSION['logged_in']) {
+		header("Location: index.php");
+	}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +56,12 @@
 			<li><a href="history.php">View History</a></li>
 		  </ul>
 		  <ul class="nav navbar-nav navbar-right">
-			<li><a href="index.php">Logout  <span class="glyphicon glyphicon-log-out"></span></a></li>
+	<li><form method="POST" action='php/logout.php'>
+        <button class="btn btn-primary btn-sm" type='submit' id="logoutButton">Logout
+        <span class="glyphicon glyphicon-log-out">
+        </span>
+        </button>
+      </form></li>
 		  </ul>
 		</div>
 	  </div>

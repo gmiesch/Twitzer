@@ -28,14 +28,24 @@
         $password = stripslashes($password);
         $password = htmlspecialchars($password, ENT_QUOTES);
 
-        $sql = "INSERT INTO Twitzer_User (username, password) VALUES ('$username', '$password');";
+		$checkExists = "SELECT * from Twitzer_User where username='" . $username . "';";
+        $result = $conn->query($checkExists);
 
-        if($conn->query($sql) === TRUE) {
-            $conn->close();
-            header("Location: index.php");
+        if($result->num_rows == 0) {
+            $sql = "INSERT INTO Twitzer_User (username, password) VALUES ('$username', '$password');";
+            if($conn->query($sql) === TRUE) {
+                $conn->close();
+                $_SESSION['username'] = $username;
+                $_SESSION['logged_in'] = true;
+                header("Location: home.php");
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "<div class=\"alert alert-dismissible\">";
+             echo "<button type=\"button\" class=\"close\" data-dismiss    =\"alert\">X</button>";
+             echo "Username already taken";
+            echo "</div>";
         }
-	}
+    }
 ?>
-

@@ -38,6 +38,7 @@
             while($row = $result->fetch_assoc()) {
                 if($row["count"] == 1) {
                     echo "login successful";
+					$_SESSION['logged_in'] = true;
 					$conn->close();
 					$_SESSION["username"] = $username;
                     header("Location: home.php");

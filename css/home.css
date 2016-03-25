@@ -23,7 +23,7 @@ body {
 .navbar {
 	font-size: 14px;
 	border-radius: 0 !important;
-	min-height:32px !important
+	min-height:32px !important;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -34,6 +34,13 @@ body {
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     color: #bdc3c7;
+}
+
+#logoutButton {
+  color: white;
+  font-size: 14px;
+  padding-bottom: 3px;
+  padding-top: 3px;
 }
 
 .footer {
